@@ -9,7 +9,7 @@ import os
 # Welcome message
 
 print("-" * 50)
-print("Welcome to the Mini Stock Price Tracker!💹")
+print("Welcome to the Mini Stock Price Tracker!")
 print("Track the live performance of any stock over the last 30 days.")
 print()
 
@@ -35,11 +35,11 @@ def stock_data(ticker):
 
 def show_current_price(hist, ticker):
     latest_price = hist['Close'][-1]
-    print(f"\n✅ The current closing price of {ticker} is {latest_price:.2f} Rs.")
+    print(f"\nThe current closing price of {ticker} is {latest_price:.2f} Rs.")
 
 # plotting the graph
 def plot_stock_graph(hist, ticker):
-    print("📊 Generating price chart...")
+    print("Generating price chart...")
     plt.figure(figsize=(12, 6))
     plt.plot(hist.index, hist['Close'], label='Closing Price', color='blue', linewidth=2, marker='o')
     plt.title(f"{ticker} - Stock Price (Last 30 Days)", fontsize=16)
@@ -54,7 +54,7 @@ def plot_stock_graph(hist, ticker):
 def save_to_csv(hist, ticker):
     filename = f"{ticker}_30days_data.csv"
     hist.to_csv(filename)
-    print(f"📁 Data saved successfully to: {filename}")
+    print(f"Data saved successfully to: {filename}")
 
 # Run the program
 data = stock_data(ticker)
@@ -67,11 +67,11 @@ if data is not None:
     plot_stock_graph(data, ticker)
 
     # Ask user if they want to save data
-    choice = input("\n📥 Do you want to save this data to a CSV file? (y/n): ").lower().strip()
+    choice = input("\nDo you want to save this data to a CSV file? (y/n): ").lower().strip()
     if choice == 'y':
         save_to_csv(data, ticker)
     else:
-        print("🗃️ Alright, data not saved.")
+        print("Alright, data not saved.")
 
 else:
     print("Ticker not found or data unavailable. Please try again with a valid ticker.")
